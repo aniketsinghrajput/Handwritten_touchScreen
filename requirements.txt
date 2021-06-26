@@ -12,6 +12,7 @@ numpy==1.19.2
 opencv-python-headless==4.5.1.48
 opencv-contrib-python-headless==4.5.1.48
 tensorflow-cpu==2.5.0
+Tk==8.6
 pip==20.2.3
 requests==2.24.0
 scipy==1.7.0
