@@ -4,9 +4,6 @@ import tkinter as tk
 import win32gui
 from PIL import ImageGrab, Image
 import numpy as np
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
 
 model = load_model('mnist_classification_old.h5')
 
@@ -23,17 +20,17 @@ def predict_digit(img):
     res = model.predict([img])[0]
     return np.argmax(res), max(res)
 
-class App(Agg):
+class App(tk.Tk):
     def __init__(self):
-        Agg.__init__(self)
+        tk.Tk.__init__(self)
 
         self.x = self.y = 0
         
         # Creating elements
-        self.canvas = Agg.Canvas(self, width=300, height=300, bg = "white", cursor="cross")
-        self.label = Agg.Label(self, text="Draw..", font=("Helvetica", 48))
-        self.classify_btn = Agg.Button(self, text = "Recognise", command = self.classify_handwriting)   
-        self.button_clear = Agg.Button(self, text = "Clear", command = self.clear_all)
+        self.canvas = tk.Canvas(self, width=300, height=300, bg = "white", cursor="cross")
+        self.label = tk.Label(self, text="Draw..", font=("Helvetica", 48))
+        self.classify_btn = tk.Button(self, text = "Recognise", command = self.classify_handwriting)   
+        self.button_clear = tk.Button(self, text = "Clear", command = self.clear_all)
        
         # Grid structure
         self.canvas.grid(row=0, column=0, pady=2, sticky=W, )
